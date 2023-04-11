@@ -1,0 +1,59 @@
+# Setting
+gpus: [0,1,2,3,4,5,6,7]
+seed: 1
+debug: False
+pretrained_path: ./pretrained
+work_dir: ./workdir
+no_progress_bar: False
+
+# Visualization
+visualization_class: 0
+visualization_sample: 0
+visualization_frames: []
+
+# Data Loader
+# ntu-xsub, ntu-xview, ntu-xsub120, ntu-xset120, kinetics
+dataset: ntu-xset120
+dataset_args:
+  ntu:
+    train_batch_size: 32
+    eval_batch_size: 256
+    num_frame: 288
+    inputs: M
+    transform: False
+    root_folder: ./data/NTU_skeleton/npy_dataset
+    ntu60_path: ./data/NTU_skeleton/nturgbd_skeletons_s001_to_s017
+    ntu120_path: ./data/NTU_skeleton/nturgbd_skeletons_s018_to_s032
+
+# Model
+model_type: STA-GCN
+model_args:
+  stem_channel: 64
+  block_args: [[64,1,2],[64,1,2],[128,2,3],[256,2,3]]
+  act_type: relu
+  drop_prob: 0.25
+  kernel_size: [3,2]
+  reduct_ratio: 2
+  bias: True
+  edge: True
+
+# Optimizer
+optimizer: SGD
+optimizer_args:
+  SGD:
+    lr: 0.1
+    momentum: 0.9
+    nesterov: True
+    weight_decay: 0.0001
+
+# Scheduler
+# step, cosine
+lr_scheduler: cosine
+scheduler_args:
+  step:
+    max_epoch: 70
+    warm_up: 10
+    step_lr: [20,50]
+  cosine:
+    max_epoch: 70
+    warm_up: 10

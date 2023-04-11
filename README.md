@@ -34,9 +34,9 @@ This repo is the official implementation for [Spatial-Temporal Adaptive Graph Co
        		-kinetics_train_label.json
        		-keintics_val_label.json
        	-NTU_skeleton\
-       		-nturgbd_skeletons_s001_to_s017
+       		-nturgbd_skeletons_s001_to_s017\
        			...
-       		-nturgbd_skeletons_s018_to_s032
+       		-nturgbd_skeletons_s018_to_s032\
        			...
   ```
     
